@@ -22,8 +22,8 @@ config = {
 def show_films(cursor, title):
     cursor.execute("""SELECT film_name AS Name,
         film_director AS Director,
-        genre_name AS Genre,
-        studio_name AS Studio
+        genre_name AS Name,
+        studio_name AS Name
         FROM film
         INNER JOIN genre ON film.genre_id = genre.genre_id
         INNER JOIN studio ON film.studio_id = studio.studio_id""")
@@ -31,10 +31,10 @@ def show_films(cursor, title):
     films = cursor.fetchall()
     print("\n -- {} --".format(title))
     for film in films:
-        print("Name: {}\n"
+        print("Film Name: {}\n"
               "Director: {}\n"
-              "Genre: {}\n"
-              "Studio: {}\n".format(film[0], film[1], film[2], film[3]))
+              "Genre Name: {}\n"
+              "Studio Name: {}\n".format(film[0], film[1], film[2], film[3]))
 
 try:
 
